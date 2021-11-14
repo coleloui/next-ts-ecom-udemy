@@ -6,6 +6,12 @@ interface Person {
 	age: number;
 }
 
+// interface PersonLoggerFn {
+// 	(personName: string, personAge: number): string;
+// }
+
+type PersonLoggerFn = (name: string, age: number) => string;
+
 // type aliases
 // to describe function types
 // type Person = {
@@ -23,11 +29,20 @@ export default function play() {
 		age: 30,
 	};
 
-	function logPersonInfo(personName: string, personAge: number) {
+	const logPersonInfo: PersonLoggerFn = (
+		personName: string,
+		personAge: number
+	): string => {
 		const info = `Name: ${personName} age: ${personAge}`;
 		console.log(info);
 		return info;
-	}
+	};
+
+	// function logPersonInfo(personName: string, personAge: number) {
+	// 	const info = `Name: ${personName} age: ${personAge}`;
+	// 	console.log(info);
+	// 	return info;
+	// }
 
 	function logPersonInfo2(person: Person) {
 		const info = `Name: ${person.name} age: ${person.age}`;
